@@ -1,2 +1,3 @@
 <!-- readme --> 
-###### [prasanth profile](prasanth-io.github.io)
+###### prasanth profile & portfolio
+###### *prasanth-io.github.io*
