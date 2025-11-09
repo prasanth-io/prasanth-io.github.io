@@ -11,7 +11,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- CSP allows external scripts ONLY, NO inline scripts -->
+        <!-- CSP: Only allow external scripts, NO inline scripts -->
         <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="noindex, nofollow">
@@ -79,6 +79,27 @@
                 justify-content: flex-start;
                 padding-left: 20px;
                 line-height: 1.5;
+                width: 100vw;
+                overflow-x: auto;
+                /* Keep spacing top/bottom as before */
+            }
+            .content > div {
+                width: 100vw;
+                overflow-x: auto;
+            }
+            code {
+                white-space: nowrap;
+                display: inline-block;
+            }
+            /* On small screens: enforce single line, allow scroll */
+            @media (max-width: 800px) {
+                .content,
+                .content > div {
+                    width: 100vw;
+                    min-width: 100vw;
+                    max-width: 100vw;
+                    overflow-x: auto;
+                }
             }
             @media (prefers-color-scheme: light) {
                 body {
@@ -156,13 +177,13 @@
         <footer class="footer">
             <div>
                 <code>
-                     <!-- : dear microsoft, kindly stop renaming the product. already we have enough names, the list goes without an end. finalise and stick to a name, more than the developer & customer / end-user, it's really hard for the recruiters. cheers. -->
+                    <!-- : dear microsoft, kindly stop renaming the product. already we have enough names, the list goes without an end. finalise and stick to a name, more than the developer & customer / end-user, it's really hard for the recruiters. cheers. -->
                     <div><code>: search keys # microsoft dynamics 365 finance and operations / microsoft dynamics 365 finance and operations apps / microsoft dynamics 365 finance and supply chain management / microsoft dynamics 365 finance / microsoft dynamics 365 supply chain management / microsoft dynamics 365 erp / microsoft dynamics 365 / microsoft cloud erp / microsoft erp / microsoft dynamics 365 enterprise / microsoft dynamics enterprise / ai erp / fin&ops / fin-ops / finops / msdyn / msdyn365/ msdyn365f&o / msdyn365f&scm / mysdynfo / msdynfscm / msd365f&o / msd365f&scm / msd365fo / msd365fscm / msd365f / msd365scm / msd365 / d365f&o / d365f&scm / d365fo / d365fscm / d365f / d365scm / d365 / mserp / msdax / dax / ax / axapta / x++. :</code></div>
                     <!-- : theme & concept are my own. &copy prasanth  © prasanth-io/github.io. -->
                 </code>
             </div>
         </footer>
-        <!-- External JS required, CSP blocks inline scripts! -->
+        <!-- Theme toggle JS: External for CSP compliance -->
         <script src="theme-toggle.js"></script>
     </body>
 </html>
