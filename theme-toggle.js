@@ -1,32 +1,37 @@
-const toggle = document.getElementById('theme-toggle');
-const html = document.documentElement;
-const switchText = document.querySelector('.switch-text');
-const THEME_KEY = 'site-theme';
+(function(){
+  const STORAGE_KEY = 'theme';
+  const html = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
 
-function applyTheme(theme) {
+  function applyTheme(theme) {
     html.setAttribute('data-theme', theme);
-    toggle.checked = theme === 'dark';
-    switchText.textContent = theme;
-}
+    if (toggle) toggle.checked = theme === 'dark';
+  }
 
-function getPreferredTheme() {
-    return localStorage.getItem(THEME_KEY) ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-}
-
-function deviceThemeChangeListener(e) {
-    if (!localStorage.getItem(THEME_KEY)) {
-        applyTheme(e.matches ? 'dark' : 'light');
+  function getStoredTheme() {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch (e) {
+      return null;
     }
-}
+  }
 
-// Initial set
-applyTheme(getPreferredTheme());
+  function preferSystemTheme() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', deviceThemeChangeListener);
+  document.addEventListener('DOMContentLoaded', function() {
+    const stored = getStoredTheme();
+    const initial = stored || preferSystemTheme();
+    applyTheme(initial);
 
-toggle.addEventListener('change', function () {
-    const theme = toggle.checked ? 'dark' : 'light';
-    localStorage.setItem(THEME_KEY, theme);
-    applyTheme(theme);
-});
+    if (!toggle) return;
+
+    // Keep checkbox state in sync if user toggles manually
+    toggle.addEventListener('change', function() {
+      const newTheme = toggle.checked ? 'dark' : 'light';
+      try { localStorage.setItem(STORAGE_KEY, newTheme); } catch (e) {}
+      applyTheme(newTheme);
+    });
+  });
+})();
