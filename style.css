@@ -118,11 +118,11 @@ code {
 }
 
 .theme-icon::before {
-    content: "☾";
+    content: "⏾";
 }
 
 #theme-toggle:checked + .switch-label .theme-icon::before {
-    content: "☀";
+    content: "☼";
 }
 
 #theme-toggle:checked + .switch-label {
