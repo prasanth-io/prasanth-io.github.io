@@ -1,37 +1,23 @@
-(function(){
-  const STORAGE_KEY = 'theme';
-  const html = document.documentElement;
+(() => {
+
+  const key = 'theme';
+  const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
 
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    if (toggle) toggle.checked = theme === 'dark';
+  const stored = localStorage.getItem(key);
+
+  /* <mark>CHANGED: no system theme detection in JS</mark> */
+  /* CSS handles system theme automatically */
+
+  if (stored) {
+    root.dataset.theme = stored; /* <mark>CHANGED</mark> */
+    toggle.checked = stored === 'dark';
   }
 
-  function getStoredTheme() {
-    try {
-      return localStorage.getItem(STORAGE_KEY);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function preferSystemTheme() {
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const stored = getStoredTheme();
-    const initial = stored || preferSystemTheme();
-    applyTheme(initial);
-
-    if (!toggle) return;
-
-    // Keep checkbox state in sync if user toggles manually
-    toggle.addEventListener('change', function() {
-      const newTheme = toggle.checked ? 'dark' : 'light';
-      try { localStorage.setItem(STORAGE_KEY, newTheme); } catch (e) {}
-      applyTheme(newTheme);
-    });
+  toggle.addEventListener('change', () => {
+    const theme = toggle.checked ? 'dark' : 'light';
+    root.dataset.theme = theme; /* <mark>CHANGED</mark> */
+    localStorage.setItem(key, theme);
   });
+
 })();
