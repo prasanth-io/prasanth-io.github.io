@@ -144,11 +144,7 @@ code {
     transform: translateX(14px);
     background: #222;
 }
-/*
-.switch-text {
-    font-family: monospace;
-}
-*/
+
 :focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
