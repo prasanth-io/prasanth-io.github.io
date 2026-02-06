@@ -35,6 +35,7 @@ html, body {
 html {
     scrollbar-gutter: stable;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
