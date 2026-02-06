@@ -1,48 +1,97 @@
+/* ======================
+BASE
+====================== */
+
 html, body {
     height: 100%;
     margin: 0;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    background: var(--bg); /* <mark>CHANGED</mark> */
-    color: var(--text);    /* <mark>CHANGED</mark> */
-}
-
-/* ===================== */
-/* THEME SYSTEM (NEW) */
-/* ===================== */
-
+/* Browser native UI theme awareness */
 :root {
-    --bg: white;           /* <mark>NEW</mark> */
-    --text: black;         /* <mark>NEW</mark> */
-    --footer: #F5F5F5;     /* <mark>NEW</mark> */
+    color-scheme: light dark;
+
+    --bg: white;
+    --text: black;
+    --footer: #F5F5F5;
 }
 
-/* automatic system preference */
+/* System dark mode automatically */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: black;       /* <mark>NEW</mark> */
-        --text: white;     /* <mark>NEW</mark> */
-        --footer: #1A1A1A; /* <mark>NEW</mark> */
+        --bg: black;
+        --text: white;
+        --footer: #1A1A1A;
     }
 }
 
-/* manual override */
-html[data-theme="dark"] {
-    --bg: black;           /* <mark>NEW</mark> */
-    --text: white;         /* <mark>NEW</mark> */
-    --footer: #1A1A1A;     /* <mark>NEW</mark> */
+/* Manual override from JS */
+
+:root[data-theme="dark"] {
+    --bg: black;
+    --text: white;
+    --footer: #1A1A1A;
 }
 
-html[data-theme="light"] {
-    --bg: white;           /* <mark>NEW</mark> */
-    --text: black;         /* <mark>NEW</mark> */
-    --footer: #F5F5F5;     /* <mark>NEW</mark> */
+:root[data-theme="light"] {
+    --bg: white;
+    --text: black;
+    --footer: #F5F5F5;
 }
 
-/* ===================== */
+/* Prevent layout shift from scrollbar */
+html {
+    scrollbar-gutter: stable;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* ======================
+LAYOUT
+====================== */
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    line-height: 1.6;
+    width: 100vw;
+    overflow-x: auto;
+}
+
+.content > div {
+    width: 100vw;
+    overflow-x: auto;
+}
+
+code {
+    display: inline-block;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 3px;
+    word-break: break-word;
+    background: var(--footer);
+}
+
+/* ======================
+TOGGLE SWITCH
+====================== */
 
 .toggle-switch {
     position: absolute;
@@ -55,7 +104,7 @@ html[data-theme="light"] {
     user-select: none;
 }
 
-.toggle-switch input[type="checkbox"] {
+.toggle-switch input {
     width: 0;
     height: 0;
     opacity: 0;
@@ -71,6 +120,7 @@ html[data-theme="light"] {
     transition: background 0.3s;
     cursor: pointer;
     margin-right: 6px;
+    will-change: transform;
 }
 
 .switch-label::after {
@@ -98,31 +148,9 @@ html[data-theme="light"] {
     font-family: monospace;
 }
 
-.content {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 20px;
-    line-height: 1.5;
-    width: 100vw;
-    overflow-x: auto;
-}
+/* Accessibility polish */
 
-.content > div {
-    width: 100vw;
-    overflow-x: auto;
-}
-
-code {
-    display: inline-block;
-}
-
-.footer {
-    margin-top: auto;
-    padding: 10px;
-    text-align: center;
-    font-size: 3px;
-    word-break: break-word;
-    background: var(--footer); /* <mark>CHANGED</mark> */
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }
