@@ -119,7 +119,7 @@ code {
 .switch-label::before {
     content: "⏾";
     position: absolute;
-    left: -20px;
+    right: -15px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 14px;
