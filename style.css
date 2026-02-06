@@ -4,7 +4,6 @@ html, body {
 }
 
 :root {
-    <meta name="color-scheme" content="light dark">
     --bg: white;
     --text: black;
     --footer: #F5F5F5;
@@ -117,11 +116,17 @@ code {
     transition: transform 0.3s;
 }
 
-.theme-icon::before {
+.switch-label::before {
     content: "⏾";
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: currentColor;
 }
 
-#theme-toggle:checked + .switch-label .theme-icon::before {
+#theme-toggle:checked + .switch-label::before {
     content: "☼";
 }
 
