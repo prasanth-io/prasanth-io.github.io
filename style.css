@@ -4,9 +4,7 @@ html, body {
 }
 
 :root {
-    /* color-scheme: light dark; */
     <meta name="color-scheme" content="light dark">
-
     --bg: white;
     --text: black;
     --footer: #F5F5F5;
@@ -56,7 +54,6 @@ body {
     justify-content: flex-start;
     padding-left: 20px;
     line-height: 1.6;
-    /* width: 100vw; */
     width: 100%;
     overflow-x: auto;
 }
@@ -106,7 +103,6 @@ code {
     transition: background 0.3s;
     cursor: pointer;
     margin-right: 6px;
-    /* will-change: transform; */
 }
 
 .switch-label::after {
