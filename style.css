@@ -132,7 +132,7 @@ code {
 
 #theme-toggle:checked + .switch-label::before {
     content: "☀";
-    transform: translateY(-45%) scale(1.15);
+    transform: translateY(-50% + 1px) scale(1.15);
     opacity: 1;
 }
 
