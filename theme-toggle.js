@@ -6,17 +6,16 @@
 
   const stored = localStorage.getItem(key);
 
-  /* <mark>CHANGED: no system theme detection in JS</mark> */
-  /* CSS handles system theme automatically */
-
+  // Apply saved theme (CSS handles default system theme)
   if (stored) {
-    root.dataset.theme = stored; /* <mark>CHANGED</mark> */
+    root.dataset.theme = stored;
     toggle.checked = stored === 'dark';
   }
 
-  toggle.addEventListener('change', () => {
+  // Save user preference
+  toggle?.addEventListener('change', () => {
     const theme = toggle.checked ? 'dark' : 'light';
-    root.dataset.theme = theme; /* <mark>CHANGED</mark> */
+    root.dataset.theme = theme;
     localStorage.setItem(key, theme);
   });
 
