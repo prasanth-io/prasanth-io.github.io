@@ -1,3 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <rect x="6" y="2" width="4" height="12" fill="black"/>
+
+<style>
+rect {
+  fill: black;
+}
+
+/* auto change for dark mode */
+@media (prefers-color-scheme: dark) {
+  rect {
+    fill: white;
+  }
+}
+</style>
+
+<rect x="6" y="2" width="4" height="12"/>
+
 </svg>
