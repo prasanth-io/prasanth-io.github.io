@@ -168,6 +168,7 @@ code {
         transition: none;
     }
 }
+
 html[data-theme-mode="light"] #theme-toggle + .switch-label::after {
     transform: translateX(0);
 }
@@ -181,13 +182,12 @@ html[data-theme-mode="dark"] #theme-toggle + .switch-label::after {
 }
 
 .theme-toggle {
-
     position: absolute;
     top: 16px;
     right: 20px;
-
     font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
     cursor: pointer;
     user-select: none;
-
 }
