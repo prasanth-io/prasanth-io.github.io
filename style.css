@@ -179,3 +179,15 @@ html[data-theme-mode="system"] #theme-toggle + .switch-label::after {
 html[data-theme-mode="dark"] #theme-toggle + .switch-label::after {
     transform: translateX(14px);
 }
+
+.theme-toggle {
+
+    position: absolute;
+    top: 16px;
+    right: 20px;
+
+    font-family: inherit;
+    cursor: pointer;
+    user-select: none;
+
+}
