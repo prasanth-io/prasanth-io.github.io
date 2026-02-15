@@ -1,31 +1,38 @@
 (() => {
+
   const key = 'theme';
   const root = document.documentElement;
-  const light = document.getElementById('theme-light');
-  const system = document.getElementById('theme-system');
-  const dark = document.getElementById('theme-dark');
-  const stored = localStorage.getItem(key);
-  function applyTheme(theme) {
-    if (theme === 'system') {
+  const toggle = document.getElementById('theme-toggle');
+
+  const modes = ['light','system','dark'];
+
+  let current = localStorage.getItem(key) || 'system';
+
+  function apply(mode) {
+
+    root.dataset.themeMode = mode;
+
+    if (mode === 'system') {
       delete root.dataset.theme;
     } else {
-      root.dataset.theme = theme;
+      root.dataset.theme = mode;
     }
+
   }
-  if (stored === 'light') light.checked = true;
-  else if (stored === 'dark') dark.checked = true;
-  else system.checked = true;
-  applyTheme(stored || 'system');
-  light?.addEventListener('change', () => {
-    localStorage.setItem(key,'light');
-    applyTheme('light');
+
+  apply(current);
+
+  toggle?.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+    let index = modes.indexOf(current);
+    current = modes[(index + 1) % modes.length];
+
+    localStorage.setItem(key, current);
+
+    apply(current);
+
   });
-  dark?.addEventListener('change', () => {
-    localStorage.setItem(key,'dark');
-    applyTheme('dark');
-  });
-  system?.addEventListener('change', () => {
-    localStorage.setItem(key,'system');
-    applyTheme('system');
-  });
+
 })();
