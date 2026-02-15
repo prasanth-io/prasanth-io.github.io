@@ -87,9 +87,16 @@ code {
 }
 
 .toggle-switch input {
+    display: none;
     width: 0;
     height: 0;
     opacity: 0;
+}
+
+.toggle-switch label {
+  cursor: pointer;
+  padding: 4px;
+  font-size: 14px;
 }
 
 .switch-label {
