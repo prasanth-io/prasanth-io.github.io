@@ -2,6 +2,7 @@
   const key = 'theme';
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
   const nextMode = {
   system: 'light',
   light: 'dark',
@@ -10,8 +11,10 @@
   let current = localStorage.getItem(key) || 'system';
   const systemQuery = window.matchMedia('(prefers-color-scheme: dark)');
   function apply(mode) {
-      toggle.textContent =
-      mode === 'system' ? 'system theme' : mode;
+      const label = mode === 'system' ? 'system theme' : mode;
+  if (toggle.textContent !== label) {
+    toggle.textContent = label;
+  }
       if (mode === 'system') {
       delete root.dataset.theme;
       } else {
