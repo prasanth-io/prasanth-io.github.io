@@ -67,11 +67,6 @@ code {
     outline: 2px solid currentColor;
     outline-offset: 2px;
 }
-@media (prefers-reduced-motion: reduce) {
-    .switch-label::before {
-        transition: none;
-    }
-}
 .theme-toggle {
     position: absolute;
     top: 16px;
