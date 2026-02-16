@@ -185,12 +185,12 @@ html[data-theme-mode="dark"] #theme-toggle + .switch-label::after {
     position: absolute;
     top: 16px;
     right: 20px;
-    /*font-family: inherit;*/
-    font-size: inherit;
+    font-family: inherit;
+    font-size: 0.85em;
     line-height: inherit;
     cursor: pointer;
     user-select: none;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    /*font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;*/
 }
 
 .plain-link,
