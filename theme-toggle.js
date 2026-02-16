@@ -16,7 +16,7 @@
     toggle.textContent = label;
   }
       if (mode === 'system') {
-      delete root.dataset.theme;
+      root.removeAttribute('data-theme');
       } else {
       root.dataset.theme = mode;
       }
