@@ -186,7 +186,7 @@ html[data-theme-mode="dark"] #theme-toggle + .switch-label::after {
     top: 16px;
     right: 20px;
     font-family: inherit;
-    font-size: 0.60em;
+    font-size: 0.50em;
     line-height: inherit;
     cursor: pointer;
     user-select: none;
